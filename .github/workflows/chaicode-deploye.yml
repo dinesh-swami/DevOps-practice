@@ -28,7 +28,7 @@ jobs:
         run: |
           docker build -t dineshswami0/chaicode-node .
           docker push dineshswami0/chaicode-node
-          
+
       - name: Deploy on Excloud
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -36,9 +36,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-              export NVM_DIR="$HOME/.nvm"
-              [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-              cd /home/ubuntu/DevOps-practice
-              git pull 
-              npm install
-              pm2 restart 0
+              sudo docker rm -f chaicode-node || true
+              sudo docker pull dineshswami0/chaicode-node
+              sudo docker run -d --name chaicode-node --restart unless-stopped -p 3000:3000 dineshswami0/chaicode-node
+              sudo docker image prune -f
