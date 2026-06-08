@@ -1,5 +1,4 @@
 name: Deploy Node Project
-
 on:
   push:
     branches:
