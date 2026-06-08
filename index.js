@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  return res.json({ messsage: "Hello, tisri duniya!" , status: "github actions is working fine"});
+  return res.json({ messsage: "Hello, tisri duniya!" , status: "again try to test" });
 });
 
 app.listen(PORT, () => {
