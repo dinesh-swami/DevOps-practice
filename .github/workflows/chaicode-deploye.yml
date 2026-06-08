@@ -17,11 +17,9 @@ jobs:
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
-      -
-        name: Set up Docker Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
       - name: Docker Build and Push
@@ -36,7 +34,9 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-              sudo docker rm -f chaicode-node || true
-              sudo docker pull dineshswami0/chaicode-node
-              sudo docker run -d --name chaicode-node --restart unless-stopped -p 3000:3000 dineshswami0/chaicode-node
-              sudo docker image prune -f
+            cd /home/ubuntu/DevOps-practice
+            git pull origin main
+            sudo docker compose pull 
+            sudo docker compose up -d
+            sudo docker image prune -f
+

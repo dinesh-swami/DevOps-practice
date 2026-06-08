@@ -1,0 +1,18 @@
+services:
+  nodejs-server:
+    image: dineshswami0/chaicode-node
+    deploy:
+      replicas: 5
+    networks:
+      - chaicode-internal
+
+  caddy:
+    image: caddy:latest
+    valumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      - chaicode-internal
+
+networks:
+  chaicode-internal:
+    driver: bridge
