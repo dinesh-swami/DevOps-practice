@@ -19,7 +19,9 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/DevOps-practice
-            git pull origin main
-            npm install
-            pm2 restart index.js  
+              export NVM_DIR="$HOME/.nvm"
+              [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+              cd /home/ubuntu/DevOps-practice
+              git pull 
+              npm install
+              pm2 restart 0
