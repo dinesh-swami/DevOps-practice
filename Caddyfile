@@ -1,5 +1,4 @@
-dinesh-swami.online {
-    tls dinesh@dinesh-swami.online
+:80 {
     handle {
         reverse_proxy nodejs-server:3000 {
             header_up Host {host}
