@@ -1,12 +1,3 @@
-dinesh-swami.online {
-    tls dinesh@dinesh-swami.online
-
-    handle {
-        reverse_proxy nodejs-server:8000 {
-            header_up Host {host}
-            header_up X-Real-IP {remote}
-            header_up X-Forwarded-For {remote}
-            header_up X-Forwarded-Proto {scheme}
-        }
-    }
+dinesh-swami.online, www.dinesh-swami.online {
+    reverse_proxy nodejs-server:8000
 }
