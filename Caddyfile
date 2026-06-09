@@ -1,6 +1,8 @@
-:80 {
+dinesh-swami.online {
+    tls dinesh@dinesh-swami.online
+
     handle {
-        reverse_proxy nodejs-server:3000 {
+        reverse_proxy nodejs-server:8000 {
             header_up Host {host}
             header_up X-Real-IP {remote}
             header_up X-Forwarded-For {remote}
